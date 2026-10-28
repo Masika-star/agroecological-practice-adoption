@@ -1,2 +1,149 @@
-# agroecological-practice-adoption
-Exploratory analysis of agroecological practice adoption among smallholder farmers using R.
+# Agroecological Practice Adoption among Smallholder Farmers: An Exploratory Analysis in R
+
+## Project status
+
+**Status:** Project initiation  
+**Primary tool:** R / RStudio  
+**Learning context:** Pro-RUWA — *R-Statistics for Beginners*  
+**Research question:** To be refined after completing the course introduction module.
+
+## 1. Project overview
+
+This project will use R to explore how smallholder farmers adopt agroecological practices, both individually and in combination. It is a learning-oriented, reproducible agricultural research project designed to strengthen skills in data management, exploratory analysis, statistical reasoning, visualisation, and transparent reporting.
+
+The project is related to my wider research interests in agroecology and smallholder farming, but it will be developed as a distinct analysis using a suitable dataset that is separate from my MSc study data.
+
+## 2. Research question
+
+The final research question will be written after I complete the Pro-RUWA course introduction and inspect the available data and codebook.
+
+**Initial working question (not final):**
+
+> What patterns of individual and joint adoption of agroecological practices can be identified among smallholder farmers in the selected dataset?
+
+The final question must be specific enough to answer with the chosen variables and study population. It will not be finalised until the data source, indicators, geographic coverage, and limitations have been checked.
+
+## 3. Project objectives
+
+The initial learning objectives are to:
+
+1. Identify and document suitable agroecological-practice indicators in a public or otherwise authorised dataset.
+2. Clean and validate the data using a transparent R workflow.
+3. Describe the prevalence of individual practices and explore which practices tend to occur together.
+4. Produce clear, interpretable tables and visualisations.
+5. Apply an appropriate introductory statistical analysis where supported by the research question and data.
+6. Document analytical decisions, limitations, and lessons learned in a reproducible report.
+
+These objectives may be refined when the research question and data source are confirmed.
+
+## 4. Data source and selection criteria
+
+**Dataset: Not yet selected.**
+
+The selected dataset should have documentation or a codebook, contain relevant practice-level variables, and permit the proposed analysis under its access and licence conditions. Before analysis, I will record:
+
+- Dataset title, publisher, citation, and access link.
+- Study locations, target population, sample size, and data-collection period (where documented).
+- Definitions and coding of each practice indicator.
+- Missing-data patterns and any survey weights or sampling design information.
+- Data-use, confidentiality, and redistribution restrictions.
+
+Raw data will not be committed to this repository unless the data licence and terms explicitly permit redistribution. If redistribution is not permitted, this repository will include data-access instructions and scripts for locally stored data instead.
+
+## 5. Planned analytical workflow
+
+The analysis will proceed in stages rather than assuming a model before examining the data.
+
+1. **Data documentation:** read the codebook and map relevant variables to the research question.
+2. **Import and validation:** import the authorised data, inspect variable types and values, and check identifiers, duplicates, missingness, and coding errors.
+3. **Data preparation:** document decisions and create analysis-ready practice indicators where justified by the questionnaire and codebook.
+4. **Descriptive analysis:** summarise adoption of each practice using appropriate denominators and, where required, account for the sampling design.
+5. **Co-adoption exploration:** visualise combinations of practices and describe common patterns without treating simple co-occurrence as proof of a causal relationship.
+6. **Additional analysis:** consider suitable tests or regression only after confirming the outcome, explanatory variables, assumptions, and data structure.
+7. **Reporting:** present results, uncertainty where appropriate, limitations, and reproducible code.
+
+Latent class analysis may be considered at a later stage if the dataset contains enough suitable categorical indicators and the method is justified by the research question. It is not a predetermined requirement for completing this introductory project.
+
+## 6. Planned repository structure
+
+```text
+agroecological-practice-adoption/
+├── README.md                 # Project purpose, progress, and methods
+├── .gitignore                # Excludes local/private and temporary files
+├── data/
+│   └── README.md             # Dataset access and data dictionary notes
+├── R/
+│   └── README.md             # Planned R scripts and workflow
+├── outputs/
+│   └── README.md             # Tables and figures generated by scripts
+└── reports/
+    └── README.md             # Reproducible project report
+```
+
+This structure may evolve as the project develops. The repository will aim to keep raw inputs separate from scripts, derived outputs, and written interpretation.
+
+## 7. Project checklist
+
+### Milestone 1 — Define the question
+
+- [ ] Complete the Pro-RUWA course introduction module.
+- [ ] Review the course learning outcomes and note the R skills covered.
+- [ ] Write one clear, answerable research question.
+- [ ] Define the target population, unit of analysis, and key concepts.
+
+### Milestone 2 — Select and understand the data
+
+- [ ] Identify a suitable public or authorised dataset.
+- [ ] Read its documentation and codebook.
+- [ ] Confirm the relevant practice indicators and their definitions.
+- [ ] Record the data citation, access conditions, licence, and limitations.
+
+### Milestone 3 — Import and prepare the data
+
+- [ ] Create an R project and organise scripts by task.
+- [ ] Import the data and inspect its structure.
+- [ ] Check missing values, duplicates, variable coding, and consistency.
+- [ ] Document all data-cleaning decisions.
+
+### Milestone 4 — Explore and analyse
+
+- [ ] Calculate adoption summaries for the selected practices.
+- [ ] Produce at least two useful and clearly labelled visualisations.
+- [ ] Explore co-adoption patterns.
+- [ ] Add an appropriate statistical test or model only if justified.
+- [ ] Interpret results in plain language and state key limitations.
+
+### Milestone 5 — Make the work reproducible
+
+- [ ] Ensure scripts run from a clean session with documented prerequisites.
+- [ ] Add data-access instructions without sharing unauthorised data.
+- [ ] Write a concise report describing methods and findings.
+- [ ] Review the README and repository structure.
+- [ ] Commit the completed work and record what I learned.
+
+## 8. Tools and learning approach
+
+The initial workflow will use R and RStudio. Packages will be selected as needed and documented in the project scripts or environment files. During the beginner stage, priority will be given to understanding the purpose of each analysis, why a method is appropriate, its assumptions, and how to interpret the results—not simply obtaining output from R commands.
+
+## 9. Expected outputs
+
+By the end of the initial project, I aim to produce:
+
+- A documented and reproducible R workflow.
+- A data-quality summary.
+- A practice-adoption summary table.
+- Clear figures showing practice prevalence and co-adoption patterns.
+- A short analytical report with findings, limitations, and references.
+
+## 10. Limitations and responsible interpretation
+
+This project will be exploratory. Results will describe the selected dataset and will not automatically generalise to all Kenyan smallholder farmers. Cross-sectional associations and co-adoption patterns will not be interpreted as causal effects. Conclusions will reflect the data's sampling design, measurement quality, geographic scope, and other documented limitations.
+
+## 11. Author
+
+**Masika-star**  
+Agricultural economics | Agroecology | Applied statistics | Reproducible agricultural research
+
+---
+
+*Project note: This README is a starting plan. The research question, dataset, variables, and final analysis will be confirmed after the course introduction module and an initial review of available data.*
