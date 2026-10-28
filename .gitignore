@@ -1,0 +1,23 @@
+# R and RStudio
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj
+
+# Local datasets (check each dataset's licence before sharing)
+data/raw/*
+!data/raw/.gitkeep
+data/private/*
+!data/private/.gitkeep
+
+# Generated outputs (commit selected, reproducible outputs when useful)
+outputs/*
+!outputs/.gitkeep
+
+# Quarto / temporary files
+*_cache/
+*_files/
+.quarto/
+.DS_Store
+Thumbs.db
