@@ -1,101 +1,56 @@
-# Initial data exploration and quality audit
+# My first data exploration: what I found
 
-**Project:** Agroecological Practice Adoption among Smallholder Farmers: An Exploratory Analysis in R  
-**Audit date:** 31 October 2026  
-**Dataset object in R:** `agro_dat`  
+**Date:** 31 October 2026  
+**Dataset object:** `agro_dat`  
 **Working copy:** `agro_clean`
 
-## 1. Scope and reproducibility
+## Starting point
 
-The dataset was explored in R using the tidyverse, particularly `dplyr` and `tidyr`. The source object was retained as `agro_dat`; a separate working object, `agro_clean`, was created for initial cleaning.
+I began by exploring the dataset in R using the tidyverse. The first inspection showed **98 observations and 46 variables**.
 
-The original dataset file, source citation, licence, codebook, and geographic/sample documentation have not yet been recorded in this repository. These details must be confirmed before substantive interpretation or redistribution. The raw dataset has therefore not been committed to GitHub.
-
-The reproducible workflow is recorded in [`R/01_data_audit_cleaning.R`](../R/01_data_audit_cleaning.R).
-
-## 2. Dataset dimensions
-
-| Check | Result |
-|---|---:|
-| Original observations | 98 |
-| Original variables | 46 |
-| Completely empty columns identified | 18 |
-| Retained observations | 98 |
-| Retained variables | 28 |
-
-The 18 completely empty columns were labelled `AC` through `AT` in the imported dataset. They were removed from the working copy using:
+I noticed that the last 18 columns, labelled `AC` to `AT`, were completely empty. I used:
 
 ```r
 agro_clean <- agro_dat |>
   select(where(~ !all(is.na(.x))))
 ```
 
-This retained all 98 observations and reduced the working dataset from 46 to 28 variables. The original `agro_dat` object was not overwritten.
+This created a working copy with **98 observations and 28 variables**. I kept the original `agro_dat` unchanged.
 
-## 3. Duplicate checks
+## What I discovered
 
-| Check | Result |
-|---|---:|
-| Completely duplicated rows | 0 |
-| Repeated values of observation identifier `Number` | 0 |
+**Farm types:** The 98 farms are almost evenly distributed across four types: T1 = 24, T2 = 25, T3 = 24, and T4 = 25. I still need to find the definitions of T1–T4.
 
-No exact duplicate rows or repeated observation identifiers were detected in the 98-row working dataset.
+**Structural data:** All 98 observations have the value `Structural data`. At this stage, this variable does not distinguish between farms, and I need to establish why it is included.
 
-## 4. Classification variables
+**Duplicates:** I found no completely duplicated rows and no repeated observation numbers.
 
-### Farm types
+**Missing values:** Five variables contain missing values:
 
-| Farm type | Observations | Percentage |
-|---|---:|---:|
-| T1 | 24 | 24.49% |
-| T2 | 25 | 25.51% |
-| T3 | 24 | 24.49% |
-| T4 | 25 | 25.51% |
-| **Total** | **98** | **100.00%** |
-
-The four farm types are nearly equally represented. The meaning and classification criteria for T1–T4 still need to be documented from the dataset source or codebook.
-
-### Structural-data category
-
-All 98 observations were classified as `Structural data`. This variable has only one observed category in the current dataset and therefore does not distinguish between observations. Its intended meaning should be confirmed before it is considered for analysis.
-
-## 5. Missing-value assessment
-
-Missingness was assessed using R's `is.na()` definition. Five variables had at least one missing observation; the other 23 retained variables had none.
-
-| Variable | Missing observations | Missing percentage |
+| Variable | Missing | Percentage |
 |---|---:|---:|
 | `Cultivated.area.ha..Livestock.UBT.` | 24 | 24.49% |
 | `X13Farm.sgrazinglivestock...` | 24 | 24.49% |
 | `X14Farm.slivestockreceivingforages...` | 24 | 24.49% |
 | `X15Farm.slivestocknourishedwithoutfeedatall...` | 24 | 24.49% |
 | `Permanenthiredworkersu` | 1 | 1.02% |
-| **Other 23 variables** | **0 each** | **0.00% each** |
 
-The four variables with 24 missing observations are livestock-related. Their equal missing counts do **not** yet establish that the missing values occur in the same 24 records or that the values are structurally missing. The missingness pattern and the relationship with `LivestockUBT` must be checked.
+The remaining 23 variables have no missing values.
 
-The single missing value in `Permanenthiredworkersu` also requires review against the original questionnaire or source data.
+## What I learned
 
-## 6. Cleaning decisions made so far
+I practised using `count()` to examine categories, `summarise()` and `across()` to calculate missing values, and `pivot_longer()` to turn the missing-value summary into an easier-to-read table.
 
-1. Removed only columns that were entirely missing.
-2. Preserved all 98 observations.
-3. Preserved the original imported object `agro_dat`.
-4. Created `agro_clean` as the working dataset.
-5. Did not impute missing values, replace missing values with zero, or delete records.
+I also learned to preserve the original dataset and make changes to a working copy. Most importantly, I should not automatically replace missing values with zero: a farm with no livestock is not the same as a farm whose livestock information was not recorded.
 
-These decisions avoid treating an unrecorded value as a genuine zero, particularly for livestock ownership and management variables.
+## My next questions
 
-## 7. Outstanding checks
+The four livestock-related variables have the same number of missing values, but I have not yet confirmed whether they are missing for the same 24 farms. I want to compare them with `LivestockUBT` and farm type to understand the pattern.
 
-The next data-quality tasks are:
+I also need to investigate the single missing value in `Permanenthiredworkersu` and check variable definitions and units against the source documentation.
 
-- Determine whether the four variables with 24 missing values share the same missing-record pattern.
-- Compare those records with `LivestockUBT` and the farm-type classifications.
-- Establish whether the missing livestock measurements are not applicable, unrecorded, or caused by another skip pattern.
-- Investigate the single missing value in `Permanenthiredworkersu`.
-- Confirm the definitions, units, valid ranges, and coding of all 28 retained variables from the codebook.
-- Check for implausible values and internal inconsistencies before descriptive analysis.
-- Record the dataset source, citation, access conditions, and sampling information.
+For now, **I have not deleted any observations or imputed any missing values**. My next step is to understand these missing records before moving on to the 15 agroecological indicators.
 
-**No imputation, case deletion, or substantive modelling has been undertaken at this stage.**
+## Code
+
+I recorded the workflow in [`R/01_data_audit_cleaning.R`](../R/01_data_audit_cleaning.R). The script expects the authorised dataset to be loaded locally as `agro_dat`; the raw data have not been uploaded to GitHub.
