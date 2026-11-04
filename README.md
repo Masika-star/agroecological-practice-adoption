@@ -24,9 +24,19 @@ The livestock-related missing values caught my attention. I do not yet know whet
 
 ## What I have learned in R
 
-So far, I have practised using the tidyverse to inspect and organise data. I am becoming more comfortable with pipes (`|>`), `select()`, `count()`, `summarise()`, `across()`, `pivot_longer()`, `mutate()`, and `arrange()`.
+### Setting up a reproducible project
 
-I have also started learning how to manage files more systematically. I used an R Project and the `here` package to build file paths, which should make my code easier to move and share without relying on a fixed working directory.
+My first step in this learning journey was to create an R Project and establish a dedicated project directory on my local machine. Within that directory, I created three main folders:
+
+- `data/` to store the source datasets and other data files.
+- `code/` to keep R scripts used for importing, cleaning, and analysing data.
+- `out/` to store outputs such as tables, figures, and other results.
+
+I set up this structure to keep project materials organised, maintain a clear workflow, and make the analysis easier to reproduce. Working within an R Project also gives the work a consistent starting point, while the `here` package helps construct project-relative file paths instead of relying on computer-specific directory paths.
+
+### Importing, exporting, and managing data
+
+I practised using the tidyverse to inspect and organise data. I am becoming more comfortable with pipes (`|>`), `select()`, `count()`, `summarise()`, `across()`, `pivot_longer()`, `mutate()`, and `arrange()`.
 
 I practised importing the dataset in different formats:
 - Excel using `read_excel()` from `readxl`.
@@ -39,7 +49,7 @@ I also practised exporting my Excel data with `write.xlsx()`. To check that the 
 
 Finally, I began creating a workbook with multiple worksheets using `createWorkbook()`, `addWorksheet()`, and `writeData()`. This gives me more control over how I organise tables for reporting.
 
-My main takeaway is that data work does not end when a file imports successfully. I also need to check the structure, understand differences between file versions, and verify exported results.
+My main takeaway is that a reliable analysis depends on more than writing code. It also requires an organised project structure, careful data handling, and checks to confirm that imported and exported data are as expected.
 
 ## What I am working on next
 
@@ -60,4 +70,4 @@ The source dataset is not stored in this repository. I will only share it if its
 
 ---
 
-**My approach:** understand the data first, make cleaning decisions carefully, and only then move to analysis.
+**My approach:** organise the project carefully, understand the data first, make cleaning decisions deliberately, and only then move to analysis.
