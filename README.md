@@ -26,15 +26,29 @@ The livestock-related missing values caught my attention. I do not yet know whet
 
 So far, I have practised using the tidyverse to inspect and organise data. I am becoming more comfortable with pipes (`|>`), `select()`, `count()`, `summarise()`, `across()`, `pivot_longer()`, `mutate()`, and `arrange()`.
 
-My main takeaway is that data cleaning is not just removing blanks. I need to understand what a value means before deciding whether to keep it, change it, or treat it as missing.
+I have also started learning how to manage files more systematically. I used an R Project and the `here` package to build file paths, which should make my code easier to move and share without relying on a fixed working directory.
+
+I practised importing the dataset in different formats:
+- Excel using `read_excel()` from `readxl`.
+- Tab-delimited text using `read_delim()` from `readr`.
+- I also reviewed the distinction between R's native `.RData` and `.rds` formats: `load()` is used for `.RData`, while `readRDS()` reads an `.rds` object.
+
+One thing I noticed is that the Excel version contains **98 rows and 28 columns**, while the tab-delimited version contains **98 rows and 46 columns**. The row counts match, but the variable counts do not. I need to compare the column names and investigate why the two versions differ before treating them as equivalent.
+
+I also practised exporting my Excel data with `write.xlsx()`. To check that the export worked as intended, I read the exported workbook back into R and compared it with the original object using `identical()`. R returned `TRUE`, confirming that the re-imported object was identical to the original.
+
+Finally, I began creating a workbook with multiple worksheets using `createWorkbook()`, `addWorksheet()`, and `writeData()`. This gives me more control over how I organise tables for reporting.
+
+My main takeaway is that data work does not end when a file imports successfully. I also need to check the structure, understand differences between file versions, and verify exported results.
 
 ## What I am working on next
 
-1. Find out whether the 24 missing livestock records are the same across all four livestock-related variables.
-2. Compare those records with `LivestockUBT` and farm type.
-3. Investigate the one missing value in permanent hired workers.
-4. Check variable definitions, units, valid ranges, and unusual values.
-5. Move on to exploring the 15 agroecological indicators.
+1. Compare the column names in the Excel and tab-delimited versions to understand why they contain different numbers of variables.
+2. Find out whether the 24 missing livestock records are the same across all four livestock-related variables.
+3. Compare those records with `LivestockUBT` and farm type.
+4. Investigate the one missing value in permanent hired workers.
+5. Check variable definitions, units, valid ranges, and unusual values.
+6. Move on to exploring the 15 agroecological indicators.
 
 ## Reproducible work
 
