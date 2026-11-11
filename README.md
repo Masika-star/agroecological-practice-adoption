@@ -1,7 +1,6 @@
 # Agroecological Practice Adoption: My R Learning Journey
 
 ## About this project
-
 I am using this project to strengthen my R skills while exploring a real agricultural dataset. My interest is in understanding how farmers use agroecological practices and how different practices may occur together.
 
 I am learning by doing: asking questions of the data, writing R code, checking what the results mean, and recording what I discover.
@@ -51,6 +50,19 @@ Finally, I began creating a workbook with multiple worksheets using `createWorkb
 
 My main takeaway is that a reliable analysis depends on more than writing code. It also requires an organised project structure, careful data handling, and checks to confirm that imported and exported data are as expected.
 
+### Correlation and simple linear regression
+
+I have now learned the fundamentals of correlation and simple linear regression.
+
+- **Correlation** measures the direction and strength of a linear association between two numeric variables. Pearson's correlation coefficient ranges from -1 to +1.
+- **Simple linear regression** models the expected relationship between an outcome variable and one explanatory variable. The slope represents the expected change in the outcome for a one-unit increase in the explanatory variable, while the intercept is the predicted outcome when the explanatory variable equals zero.
+- I learned that a statistically significant coefficient is not automatically practically important. Interpretation should consider the size of the estimate, its units, the farming context, and model diagnostics.
+- I also learned that correlation and regression do not, by themselves, establish causation. A model should be guided by the data, subject knowledge, and the assumptions that can reasonably be defended.
+
+I have not yet fitted a regression model to this dataset. The course examples use fertilizer and yield, but I will not assume those variables exist in my dataset. I first need to inspect the actual numeric variables, their definitions, and their units.
+
+To support that step, I added a script that profiles numeric variables and produces an exploratory Pearson correlation matrix. The results will help me choose a meaningful relationship to investigate rather than selecting variables simply because they are numeric.
+
 ## What I am working on next
 
 1. Compare the column names in the Excel and tab-delimited versions to understand why they contain different numbers of variables.
@@ -59,14 +71,18 @@ My main takeaway is that a reliable analysis depends on more than writing code. 
 4. Investigate the one missing value in permanent hired workers.
 5. Check variable definitions, units, valid ranges, and unusual values.
 6. Move on to exploring the 15 agroecological indicators.
+7. Review the numeric-variable profile and exploratory correlations produced by `R/02_numeric_relationship_review.R`. After confirming the variable definitions and units, select a substantively meaningful pair for simple linear regression.
 
 ## Reproducible work
 
-I have started recording the work in an R script: [`R/01_data_audit_cleaning.R`](R/01_data_audit_cleaning.R).
+I have started recording the work in R scripts:
+
+- [`R/01_data_audit_cleaning.R`](R/01_data_audit_cleaning.R) — initial data audit and cleaning.
+- [`R/02_numeric_relationship_review.R`](R/02_numeric_relationship_review.R) — numeric-variable profile and exploratory Pearson correlations.
 
 I also keep a short account of my findings in [`reports/initial-data-quality-audit.md`](reports/initial-data-quality-audit.md).
 
-The source dataset is not stored in this repository. I will only share it if its licence and access conditions permit redistribution. For now, the R script expects me to load the authorised data locally as `agro_dat`.
+The source dataset is not stored in this repository. I will only share it if its licence and access conditions permit redistribution. For now, the R scripts expect me to load the authorised data locally as `agro_dat`.
 
 ---
 
