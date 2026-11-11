@@ -1,6 +1,6 @@
 # Correlation and simple linear regression
 # Project: Agroecological Practice Adoption among Smallholder Farmers
-# Dataset: Burkina Faso case-study observations
+# Dataset: Viability of Agroecological Practices in Africa dataset
 #
 # Purpose:
 #   1. Reproduce Pearson and Spearman correlation tests.
@@ -216,7 +216,7 @@ organic_matter_scatterplot <- ggplot(
   ) +
   labs(
     title = "Organic Matter Production and Organic Manure Application",
-    subtitle = "Burkina Faso case study: all complete observations included",
+    subtitle = "Viability of Agroecological Practices in Africa dataset: all complete observations included",
     x = "Organic matter produced per cultivated hectare (kgMS/ha)",
     y = "Cultivated area fertilised with organic manure (%)",
     caption = paste(
