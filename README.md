@@ -53,7 +53,7 @@ My main takeaway is that a reliable analysis depends on more than writing code. 
 
 ### Correlation and simple linear regression
 
-I applied the correlation and simple linear regression techniques from the Pro-RUWA course to two variables in the Burkina Faso case-study dataset:
+I applied the correlation and simple linear regression techniques from the Pro-RUWA course to two variables in the Viability of Agroecological Practices in Africa dataset:
 
 - Organic matter produced per cultivated hectare (`4OMproduced(kgMS)/cultivatedarea(ha)`).
 - Cultivated area fertilised with organic manure (`6Cultivatedareafertilizedwithorganicmanure(%)`).
@@ -85,7 +85,7 @@ I used the `broom` package to organise regression output:
 4. Investigate the one missing value in permanent hired workers.
 5. Check variable definitions, units, valid ranges, and unusual values.
 6. Move on to exploring the 15 agroecological indicators.
-7. Continue the Pro-RUWA learning sequence and apply each new technique to the Burkina Faso dataset.
+7. Continue the Pro-RUWA learning sequence and apply each new technique to the agroecology dataset.
 
 ## Reproducible work
 
