@@ -1,4 +1,4 @@
-# Correlation and simple linear regression: Burkina Faso case study
+# Agroecological Practice Adoption among Smallholder Farmers: Correlation and Simple Linear Regression
 
 **Date:** 11 November 2026  
 **Dataset object:** `agro_clean`  
@@ -8,7 +8,7 @@
 
 ## Purpose
 
-I applied the correlation and simple linear regression techniques covered in the Pro-RUWA course to the Burkina Faso case-study data. The practical exercise helped me distinguish linear association from rank-based monotonic association, interpret regression coefficients, and assess model fit.
+I applied the correlation and simple linear regression techniques covered in the Pro-RUWA course to selected farm-level observations from the Viability of Agroecological Practices in Africa dataset. The practical exercise helped me distinguish linear association from rank-based monotonic association, interpret regression coefficients, and assess model fit.
 
 ## Variables selected
 
