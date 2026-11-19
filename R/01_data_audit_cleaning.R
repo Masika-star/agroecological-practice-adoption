@@ -5,24 +5,24 @@
 #
 # Before running:
 #   1. Open the project in RStudio.
-#   2. Import the authorised source dataset into an object named `agro_dat`.
+#   2. Import the authorised source dataset into an object named `agro_data`.
 #   3. Run this script from the project root.
 #
 # The source data are intentionally not stored in this repository.
 
 library(tidyverse)
 
-if (!exists("agro_dat")) {
+if (!exists("agro_data")) {
   stop(
-    "Object 'agro_dat' was not found. Import the authorised source dataset ",
-    "into R as agro_dat, then run this script again."
+    "Object 'agro_data' was not found. Import the authorised source dataset ",
+    "into R as agro_data, then run this script again."
   )
 }
 
 # 1. Inspect the original dataset -----------------------------------------
 
-original_dimensions <- dim(agro_dat)
-original_variable_names <- names(agro_dat)
+original_dimensions <- dim(agro_data)
+original_variable_names <- names(agro_data)
 
 message(
   "Original dataset: ",
@@ -30,12 +30,12 @@ message(
   original_dimensions[2], " variables."
 )
 
-glimpse(agro_dat)
+glimpse(agro_data)
 
 # 2. Identify and remove columns that are entirely missing ----------------
 
-empty_columns <- names(agro_dat)[
-  vapply(agro_dat, function(x) all(is.na(x)), logical(1))
+empty_columns <- names(agro_data)[
+  vapply(agro_data, function(x) all(is.na(x)), logical(1))
 ]
 
 message(
@@ -44,12 +44,12 @@ message(
 )
 
 # Keep the original object unchanged and create a cleaned working copy.
-agro_clean <- agro_dat |>
+agro_clean <- agro_data |>
   select(where(~ !all(is.na(.x))))
 
 clean_dimensions <- dim(agro_clean)
 
-stopifnot(nrow(agro_clean) == nrow(agro_dat))
+stopifnot(nrow(agro_clean) == nrow(agro_data))
 
 message(
   "Working dataset after removing completely empty columns: ",
@@ -119,7 +119,7 @@ message("Variable structure of the cleaned working dataset:")
 glimpse(agro_clean)
 
 # Notes:
-# - agro_dat is preserved; agro_clean is the working copy.
+# - agro_data is preserved; agro_clean is the working copy.
 # - No observations have been removed.
 # - No partial missing values have been imputed or replaced with zero.
 # - Investigate the reason for missing livestock-related measurements
