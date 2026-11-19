@@ -17,10 +17,22 @@ One of my first data-cleaning discoveries was that 18 columns (`AC` to `AT`) wer
 - The dataset contains four farm types: T1 (24 farms), T2 (25), T3 (24), and T4 (25). They are almost equally represented.
 - Every observation is labelled `Structural data`. I still need to understand what this variable represents.
 - I found no completely duplicated rows and no repeated observation numbers.
-- Five of the 28 retained variables contain missing values. Four livestock-related variables each have 24 missing values (24.49%), while `Permanenthiredworkersu` has one (1.02%).
-- The other 23 variables have no missing values.
+- My initial audit identified four livestock-related variables with 24 missing values each, and one missing value in permanent hired workers.
+- In my 19 November follow-up, I standardised the column names with `janitor::clean_names()`. The cleaned working dataset remains **98 observations × 28 variables**.
+- I confirmed that three livestock-management indicators have missing values for the same 24 T1 farms, all of which have zero livestock UBT. This suggests those three indicators may be structurally not applicable for farms without livestock.
+- I found that the single missing permanent hired-worker value belongs to Farm 16 (T1). I have retained it as missing rather than assuming it means zero.
 
-The livestock-related missing values caught my attention. I do not yet know whether they mean that a measurement was not applicable, was not recorded, or follows a questionnaire skip pattern. I will investigate before changing anything.
+One correction remains: the fourth variable from the initial livestock-related group is `cultivated_area_ha_livestock_ubt`. In my follow-up code, I selected `livestock_ubt` instead, which has no missing values. I therefore still need to verify the missingness pattern of the ratio variable before treating the four-variable check as complete. I have documented the distinction in my [data-quality learning log](reports/missing-values-and-data-quality-learning-log.md).
+
+## My 19 November learning session: data quality and missing values
+
+I continued my Pro-RUWA learning by applying the lesson on missing values and outliers to the actual agroecological dataset. I used `janitor::clean_names()` to standardise the variable names and kept the cleaned copy at 98 observations × 28 variables.
+
+I then used `is.na()`, `sum()`, `rowSums()`, and tidyverse functions such as `summarise()`, `mutate()`, `select()`, `count()`, and `group_by()` to examine missing-value patterns. I found that three livestock-management indicators were missing together for 24 T1 farms, all with zero livestock UBT. I am treating these values as potentially structurally not applicable, retaining them as missing while awaiting confirmation from the dataset documentation. I also located the one missing permanent hired-worker value in Farm 16. I retained it as `NA` because the available information does not establish that the farm had zero permanent workers.
+
+I learned to distinguish a genuine zero from a missing value and to check variable names carefully before writing code. I also identified one outstanding correction: the follow-up check used `livestock_ubt` instead of the related ratio variable `cultivated_area_ha_livestock_ubt`, so I have not yet reconfirmed the missingness pattern for that fourth variable.
+
+I recorded the exercise, the decisions, and the limits of what I established in [my data-quality learning log](reports/missing-values-and-data-quality-learning-log.md).
 
 ## What I have learned in R
 
@@ -79,13 +91,9 @@ I used the `broom` package to organise regression output:
 
 ## What I am working on next
 
-1. Compare the column names in the Excel and tab-delimited versions to understand why they contain different numbers of variables.
-2. Find out whether the 24 missing livestock records are the same across all four livestock-related variables.
-3. Compare those records with `LivestockUBT` and farm type.
-4. Investigate the one missing value in permanent hired workers.
-5. Check variable definitions, units, valid ranges, and unusual values.
-6. Move on to exploring the 15 agroecological indicators.
-7. Continue the Pro-RUWA learning sequence and apply each new technique to the agroecology dataset.
+1. Complete the outstanding missingness check for `cultivated_area_ha_livestock_ubt`.
+2. Continue the Pro-RUWA learning sequence and apply each new concept to this same dataset.
+3. Move on to exploring the 15 agroecological indicators as the learning sequence allows.
 
 ## Reproducible work
 
@@ -95,7 +103,7 @@ I have recorded the work in these R scripts:
 - [`R/02_numeric_relationship_review.R`](R/02_numeric_relationship_review.R) — numeric-variable profile and exploratory correlations.
 - [`R/03_correlation_regression.R`](R/03_correlation_regression.R) — Pearson and Spearman correlations, Pearson sensitivity check, simple linear regression, and export of tables and a scatterplot.
 
-The analysis findings are documented in [`reports/correlation-regression-analysis.md`](reports/correlation-regression-analysis.md). The initial data-quality findings are recorded in [`reports/initial-data-quality-audit.md`](reports/initial-data-quality-audit.md).
+The analysis findings are documented in [`reports/correlation-regression-analysis.md`](reports/correlation-regression-analysis.md). The initial data-quality findings are recorded in [`reports/initial-data-quality-audit.md`](reports/initial-data-quality-audit.md). The 19 November data-quality exercise and my missing-value decisions are documented in [my data-quality learning log](reports/missing-values-and-data-quality-learning-log.md).
 
 The source dataset is not stored in this repository. I will only share it if its licence and access conditions permit redistribution. The R scripts expect me to load the authorised data locally and create the cleaned object `agro_clean`.
 
