@@ -14,7 +14,7 @@
 #
 # Before running:
 #   1. Open the R Project in RStudio.
-#   2. Import the authorised source dataset as agro_dat.
+#   2. Import the authorised source dataset as agro_data.
 #   3. Run R/01_data_audit_cleaning.R first, or let this script create agro_clean.
 #   4. Run this script from the project root.
 
@@ -23,13 +23,13 @@ library(tidyverse)
 # 1. Confirm that the working dataset is available -------------------------
 
 if (!exists("agro_clean")) {
-  if (exists("agro_dat")) {
-    agro_clean <- agro_dat |>
+  if (exists("agro_data")) {
+    agro_clean <- agro_data |>
       select(where(~ !all(is.na(.x))))
   } else {
     stop(
-      "Neither 'agro_clean' nor 'agro_dat' was found. ",
-      "Import the authorised dataset as agro_dat and run the data-audit script."
+      "Neither 'agro_clean' nor 'agro_data' was found. ",
+      "Import the authorised dataset as agro_data and run the data-audit script."
     )
   }
 }
