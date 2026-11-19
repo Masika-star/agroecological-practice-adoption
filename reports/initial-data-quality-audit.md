@@ -1,7 +1,7 @@
 # My first data exploration: what I found
 
 **Date:** 31 October 2026  
-**Dataset object:** `agro_dat`  
+**Dataset object:** `agro_data`  
 **Working copy:** `agro_clean`
 
 ## Starting point
@@ -11,11 +11,11 @@ I began by exploring the dataset in R using the tidyverse. The first inspection 
 I noticed that the last 18 columns, labelled `AC` to `AT`, were completely empty. I used:
 
 ```r
-agro_clean <- agro_dat |>
+agro_clean <- agro_data |>
   select(where(~ !all(is.na(.x))))
 ```
 
-This created a working copy with **98 observations and 28 variables**. I kept the original `agro_dat` unchanged.
+This created a working copy with **98 observations and 28 variables**. I kept the original `agro_data` unchanged.
 
 ## What I discovered
 
@@ -53,4 +53,4 @@ For now, **I have not deleted any observations or imputed any missing values**. 
 
 ## Code
 
-I recorded the workflow in [`R/01_data_audit_cleaning.R`](../R/01_data_audit_cleaning.R). The script expects the authorised dataset to be loaded locally as `agro_dat`; the raw data have not been uploaded to GitHub.
+I recorded the workflow in [`R/01_data_audit_cleaning.R`](../R/01_data_audit_cleaning.R). The script expects the authorised dataset to be loaded locally as `agro_data`; the raw data have not been uploaded to GitHub.
