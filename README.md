@@ -8,9 +8,9 @@ I am learning by doing: asking questions of the data, writing R code, checking w
 
 ## My progress so far
 
-I loaded the dataset into R as `agro_dat` and began exploring it with the tidyverse. My first inspection showed **98 observations and 46 variables**.
+I loaded the dataset into R as `agro_data` and began exploring it with the tidyverse. My first inspection showed **98 observations and 46 variables**.
 
-One of my first data-cleaning discoveries was that 18 columns (`AC` to `AT`) were completely empty. I removed these from a separate working copy called `agro_clean`, leaving **98 observations and 28 variables**. I kept the original `agro_dat` unchanged.
+One of my first data-cleaning discoveries was that 18 columns (`AC` to `AT`) were completely empty. I removed these from a separate working copy called `agro_clean`, leaving **98 observations and 28 variables**. I kept the original `agro_data` unchanged.
 
 ### What I found
 
